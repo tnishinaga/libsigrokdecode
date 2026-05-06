@@ -103,6 +103,8 @@ class Dmi:
                     data = str(AbstractCommand(self.data))
                 case DmRegAddress.abstractauto:
                     data = str(AbstractCommandAutoExec(self.data))
+                case DmRegAddress.sbcs:
+                    data = str(SystemBusAccessControlAndStatus(self.data))
                 case _:
                     data = f"{self.data:#010x}"
                     pass
