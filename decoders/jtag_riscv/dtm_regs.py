@@ -1,3 +1,4 @@
+from __future__ import annotations
 import math
 from enum import Enum, IntEnum
 
@@ -20,7 +21,7 @@ class DtmCs:
         self.dmihardreset = dmihardreset
 
     @staticmethod
-    def parse_int(dtm_binary: int) -> DtmCs | None:  # noqa: F821
+    def parse_int(dtm_binary: int) -> DtmCs | None:
         if dtm_binary != 0 and 32 <= math.log2(dtm_binary):
             print("dtm_binary too large")
             return None
@@ -77,7 +78,7 @@ class Dmi:
         self.op: int = op
 
     @staticmethod
-    def parse_int(send: bool, abits: int, dmi_binary: int) -> Dmi | None:  # noqa: F821
+    def parse_int(send: bool, abits: int, dmi_binary: int) -> Dmi | None:
         op: int = dmi_binary & 0b11
         data: int = (dmi_binary >> 2) & 0xFFFF_FFFF
         address: int = (dmi_binary >> (32 + 2)) & ((1 << abits) - 1)
