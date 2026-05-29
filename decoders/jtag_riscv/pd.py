@@ -108,5 +108,5 @@ class Decoder(srd.Decoder):
             if is_output:
                 index = 0
         if index is not None and tap_reg is not None and data is not None:
-            self.put(ss, es, self.out_ann, [index,[f'{tap_reg}: {data}']])
+            self.put(ss, es, self.out_ann, [index,[f'{tap_reg} {"send" if is_output else "recv"}: {data}']])
 
